@@ -10,14 +10,11 @@ document.querySelectorAll('.completed').forEach(function (item, index) {
       document.querySelector('#assignedTasks').innerText
     );
 
-    // Update the counts
     document.querySelector('#taskCount').innerText = taskCount + 1;
     document.querySelector('#assignedTasks').innerText = assignedTasks - 1;
 
-    // Disable the button (button or item that was clicked)
     e.target.disabled = true;
 
-    // Optionally, you can also remove the event listener (if you prefer that behavior)
     e.target.removeEventListener('click', handleClick);
 
     let datenow = new Date();
@@ -54,7 +51,6 @@ document.querySelectorAll('.completed').forEach(function (item, index) {
       .classList.add('disabled');
   }
 
-  // Add the event listener to each item
   item.addEventListener('click', handleClick);
 });
 
@@ -70,4 +66,19 @@ let randomNum = () => {
 btn.addEventListener('click', function () {
   let randomColor = `rgb(${randomNum()},${randomNum()},${randomNum()})`;
   document.body.style.backgroundColor = randomColor;
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  let currentDate = document.getElementById('currentDate');
+  let currentDay = document.getElementById('currentDay');
+  let nowDate = new Date();
+
+  let monthName = nowDate.toLocaleString('en-US', { month: 'short' });
+  let day = String(nowDate.getDate()).padStart(2, '0');
+  let year = nowDate.getFullYear();
+
+  currentDate.innerText = `${monthName} ${day} ${year}`;
+
+  let dayString = nowDate.toLocaleString('en-US', { weekday: 'short' });
+  currentDay.innerText = dayString + ',';
 });
