@@ -61,3 +61,13 @@ document.querySelectorAll('.completed').forEach(function (item, index) {
 document.querySelector('#clearHistory').addEventListener('click', function () {
   document.querySelector('.logHistory').innerHTML = '';
 });
+
+const btn = document.getElementById('btn');
+let randomNum = () => {
+  return Math.floor(Math.random() * 256);
+};
+
+btn.addEventListener('click', function () {
+  let randomColor = `rgb(${randomNum()},${randomNum()},${randomNum()})`;
+  document.body.style.backgroundColor = randomColor;
+});
